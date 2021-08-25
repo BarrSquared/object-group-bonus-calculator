@@ -36,9 +36,10 @@ const employees = [
 //return new obj with bonusPercentage, totalCompensation, totalBonus
 
 function processEmpBonus (obj) {
-  let processedBonuses = {};
-function bonusPercentCal(empObj) {
   let employeeSal = parseInt(empObj.annualSalary);
+  let processedBonuses = {};
+  
+function bonusPercentCal(empObj) {
 
   let bonusPercentage = 0;
 
@@ -89,4 +90,4 @@ let totalCompensation = totalBonus + employeeSal;
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-console.log(bonusCalculator(employees));
+console.log(processEmpBonus(employees));
