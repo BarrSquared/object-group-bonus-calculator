@@ -8,13 +8,13 @@ const employees = [
     {
       name: 'Jem',
       employeeNumber: '62347',
-      annualSalary: '63500',
+      annualSalary: '63507',
       reviewRating: 4
     },
     {
       name: 'Scout',
       employeeNumber: '6243',
-      annualSalary: '74750',
+      annualSalary: '7475',
       reviewRating: 5
     },
     {
@@ -57,6 +57,7 @@ for(let employee of employees) {
  */
 function processEmployeeBonus(employeeInput) {
     employeeInput.bonusPercentage = 200;
+    const salary = parseInt(employeeInput.annualSalary);
     if(employeeInput.reviewRating <= 2){
         employeeInput.bonusPercentage = 0;
     } else if(employeeInput.reviewRating === 3){
@@ -71,7 +72,7 @@ function processEmployeeBonus(employeeInput) {
     if(employeeInput.employeeNumber.length === 4) {
         employeeInput.bonusPercentage += 0.05;
     }
-    if(employeeInput.annualSalary > 65000) {
+    if( salary > 65000) {
         employeeInput.bonusPercentage -= 0.01;
     }
     if(employeeInput.bonusPercentage < 0) {
@@ -79,6 +80,11 @@ function processEmployeeBonus(employeeInput) {
     } else if(employeeInput.bonusPercentage > 0.13) {
         employeeInput.bonusPercentage = 0.13;
     }
+    employeeInput.totalBonus = salary * 
+                                employeeInput.bonusPercentage;
+    employeeInput.totalBonus = employeeInput.totalBonus.toFixed(0);
+    employeeInput.totalCompensation = salary + parseInt(employeeInput.totalBonus);
+
     return employeeInput;
 } // end processEmployeeBonus function
 
