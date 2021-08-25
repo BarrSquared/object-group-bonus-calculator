@@ -33,12 +33,6 @@ const employees = [
   
   // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
 
-
-
-  
-
-
-
 // Take small steps! Don't write a for loop and two functions that do all of the calculations right away.
 // This problem is massive! Break the problem down. Use the debugger.
 // What is the fewest lines of code I can write and test to get just a little closer?
@@ -49,7 +43,24 @@ const employees = [
 console.table(employees);
 
 // 1 - Loop over all employees
+for(let employee of employees) {
+    // console.log(employee);
+    let employeeOutput = processEmployeeBonus(employee);
+    console.log(employeeOutput);
+}
+
 // 2 - Create a function that takes in an obj, returns an obj
+/**
+ * 
+ * @param {object} employeeInput Employee to process
+ * @return{object} Object with bonus information
+ */
+function processEmployeeBonus(employeeInput) {
+    employeeInput.bonusPercentage = 200;
+
+    return employeeInput;
+}
+
 // 3 - Calculate the bonus
 // 4 - Move that calculation into a separate funciton
 // 5 - Write some tests
