@@ -57,11 +57,34 @@ for(let employee of employees) {
  */
 function processEmployeeBonus(employeeInput) {
     employeeInput.bonusPercentage = 200;
-
+    if(employeeInput.reviewRating <= 2){
+        employeeInput.bonusPercentage = 0;
+    } else if(employeeInput.reviewRating === 3){
+        employeeInput.bonusPercentage = 0.04;
+    } else if(employeeInput.reviewRating === 4){
+        employeeInput.bonusPercentage = 0.06;
+    } else if(employeeInput.reviewRating === 5){
+        employeeInput.bonusPercentage = 0.1;
+    } else {
+        //do nothing
+    }
+    if(employeeInput.employeeNumber.length === 4) {
+        employeeInput.bonusPercentage += 0.05;
+    }
+    if(employeeInput.annualSalary > 65000) {
+        employeeInput.bonusPercentage -= 0.01;
+    }
+    if(employeeInput.bonusPercentage < 0) {
+        employeeInput.bonusPercentage = 0;
+    } else if(employeeInput.bonusPercentage > 0.13) {
+        employeeInput.bonusPercentage = 0.13;
+    }
     return employeeInput;
-}
+} // end processEmployeeBonus function
 
 // 3 - Calculate the bonus
+
+
 // 4 - Move that calculation into a separate funciton
 // 5 - Write some tests
 
