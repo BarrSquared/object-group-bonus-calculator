@@ -57,24 +57,7 @@ for(let employee of employees) {
  */
 function processEmployeeBonus(employeeInput) {
     employeeInput.bonusPercentage = 200;
-    const salary = parseInt(employeeInput.annualSalary);
-    if(employeeInput.reviewRating <= 2){
-        employeeInput.bonusPercentage = 0;
-    } else if(employeeInput.reviewRating === 3){
-        employeeInput.bonusPercentage = 0.04;
-    } else if(employeeInput.reviewRating === 4){
-        employeeInput.bonusPercentage = 0.06;
-    } else if(employeeInput.reviewRating === 5){
-        employeeInput.bonusPercentage = 0.1;
-    } else {
-        //do nothing
-    }
-    if(employeeInput.employeeNumber.length === 4) {
-        employeeInput.bonusPercentage += 0.05;
-    }
-    if( salary > 65000) {
-        employeeInput.bonusPercentage -= 0.01;
-    }
+
     if(employeeInput.bonusPercentage < 0) {
         employeeInput.bonusPercentage = 0;
     } else if(employeeInput.bonusPercentage > 0.13) {
@@ -84,13 +67,46 @@ function processEmployeeBonus(employeeInput) {
                                 employeeInput.bonusPercentage;
     employeeInput.totalBonus = employeeInput.totalBonus.toFixed(0);
     employeeInput.totalCompensation = salary + parseInt(employeeInput.totalBonus);
-
     return employeeInput;
 } // end processEmployeeBonus function
 
+/**
+ * 
+ * @param {string} employeeNumber 
+ * @param {string} salary 
+ * @param {number} rating 
+ * @returns {number} bonus percent
+ */
+function calculateBonusPercent(employeeNumber, annualSalary, rating) {
+    let bonusPercentage = 0;
+    const salary = parseInt(annualSalary);
+    if(rating <= 2){
+        bonusPercentage = 0;
+    } else if(rating === 3){
+        bonusPercentage = 0.04;
+    } else if(rating === 4){
+        bonusPercentage = 0.06;
+    } else if(rating === 5){
+        bonusPercentage = 0.1;
+    } else {
+        //do nothing
+    }
+    if(employeeNumber.length === 4) {
+        bonusPercentage += 0.05;
+    }
+    if( salary > 65000) {
+        bonusPercentage -= 0.01;
+    }
+    return bonusPercentage;
+}
+
+function checkBonusRange() {
+
+}
 // 3 - Calculate the bonus
 
 
 // 4 - Move that calculation into a separate funciton
+
 // 5 - Write some tests
 
